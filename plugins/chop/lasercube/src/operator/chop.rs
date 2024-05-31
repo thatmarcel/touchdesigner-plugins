@@ -4,15 +4,6 @@ use crate::api::lasercube_point::LasercubePoint;
 use crate::operator::base::LasercubeOp;
 
 impl Chop for LasercubeOp {
-    fn general_info(&self, _input: &OperatorInputs<ChopInput>) -> ChopGeneralInfo {
-        ChopGeneralInfo {
-            cook_every_frame: true,
-            cook_every_frame_if_asked: true,
-            timeslice: true,
-            input_match_index: 0
-        }
-    }
-
     fn execute(&mut self, _output: &mut ChopOutput, inputs: &OperatorInputs<ChopInput>) {
         self.execution_number += 1;
 
@@ -27,7 +18,7 @@ impl Chop for LasercubeOp {
                 return;
             }
         };
-        
+
         if first_input.num_samples() < 1 {
             self.set_warning("No samples found");
             return;
@@ -37,7 +28,7 @@ impl Chop for LasercubeOp {
             self.set_warning("Not enough channels found");
             return;
         }
-        
+
         let mut frame_samples: Vec<LasercubePoint> = vec![LasercubePoint::default(); first_input.num_samples()];
 
         for sample_index in 0..first_input.num_samples() {
@@ -59,20 +50,26 @@ impl Chop for LasercubeOp {
             frame_samples[sample_index] = point;
         }
 
-        let _sent_bytes_count = self.manager.send_frame_samples(frame_samples);
+        let frame_samples_count = frame_samples.len();
 
-        /* let frame_samples_count = frame_samples.len();
-        
         let _sent_bytes_count = match self.manager.send_frame_samples(frame_samples) {
             Ok(sbc) => sbc,
             Err(e) => {
                 self.set_warning(format!("Sending samples failed with error: {} (frame samples count: {})", e, frame_samples_count).as_str());
                 return;
             }
-        }; */
+        };
 
-        // self.set_warning(format!("Ring buffer empty sample count: {:?}", self.manager.get_ring_buffer_empty_sample_count()).as_str());
         self.set_warning("");
         self.set_error("");
+    }
+
+    fn general_info(&self, _input: &OperatorInputs<ChopInput>) -> ChopGeneralInfo {
+        ChopGeneralInfo {
+            cook_every_frame: true,
+            cook_every_frame_if_asked: true,
+            timeslice: true,
+            input_match_index: 0
+        }
     }
 }
