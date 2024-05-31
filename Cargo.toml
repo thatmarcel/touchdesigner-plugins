@@ -14,6 +14,7 @@ cxx-build = "1"
 [workspace]
 members = [
     "plugins/chop/lasercube",
+    "plugins/chop/unreal-engine-connection",
     "td-rs-autocxx-build",
     "td-rs-base",
     "td-rs-chop",
