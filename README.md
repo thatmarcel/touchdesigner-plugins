@@ -1,7 +1,7 @@
 # TouchDesigner plugins
 
 This repository is a fork of the awesome [td-rs](https://github.com/tychedelia/td-rs) with more plugins added.
-For more information on how to build the plugins, take a look at its documentation.
+For more information on how to build the plugins, take a look at the original repo's documentation.
 
 ## Plugins
 ### Lasercube
