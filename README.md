@@ -34,9 +34,10 @@ A plugin that allows you to send values from Touch Designer to Unreal Engine and
 5. Create a new C++ class via the `Tools` menu to create a C++ project if you don't have one already
 6. Download the contents of [the repository with the files for the Unreal Engine side](https://github.com/thatmarcel/unreal-engine-touch-designer-connection)
 7. Move the `TouchDesignerConnection` folder from the downloaded repository into the `<UE project location>/Source/<UE project name>` folder (there should also be the files `<UE project name>.cpp` and `<UE project name>.Build.cs` in there).
-8. Compile your Unreal Engine C++ project
-9. Find the `TouchDesignerConnectionActor` in the `C++ Classes/<UE project name>/TouchDesigner` folder inside the Unreal Engine **Content Browser** and drag it into the level view to place it in the world.
-10. You're now ready to send values between TouchDesigner and Unreal Engine (you need to run the Unreal Engine project to establish a connection)
+8. Add `"Networking"` and `"Sockets"` to the list of `PublicDependencyModuleNames` in the `<UE project name>.Build.cs` file
+9. Compile your Unreal Engine C++ project
+10. Find the `TouchDesignerConnectionActor` in the `C++ Classes/<UE project name>/TouchDesigner` folder inside the Unreal Engine **Content Browser** and drag it into the level view to place it in the world.
+11. You're now ready to send values between TouchDesigner and Unreal Engine (you need to run the Unreal Engine project to establish a connection)
     - To send values from TD to UE, attach a CHOP with one or more channels to the input of the `Unreal Engine Connection` CHOP. The values will now appear under `Received Values` on the `TouchDesignerConnectionActor` instance. You can e.g. access these values via blueprints.
     - To send values from UE to TD, add entries to `Sent Values` on the `TouchDesignerConnectionActor` manually or e.g. via a blueprint. The output of the `Unreal Engine Connection` CHOP will then contain the values.
     - (You can also have TD and UE running on different computers in the same network as long as you adjust the IP addresses accordingly)
