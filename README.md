@@ -27,9 +27,9 @@ This plugin is still in development. You may experience visual glitches or disco
 A plugin that allows you to send values from Touch Designer to Unreal Engine and vice-versa in realtime.
 
 #### Setup
-**There is a detailed and complete step-by-step guide with text and videos available in [English](https://guides.cx/g/sending-values-between-touch-designer-and-unreal-engine) and [German](https://guides.cx/g/in-echtzeit-daten-zwischen-touch-designer-und-unreal-engine-schicken).** It is recommended to follow one of those instead of the one below.
+**There is a detailed and complete step-by-step guide with text and videos available in [English](https://guides.cx/g/sending-values-between-touch-designer-and-unreal-engine) and [German](https://guides.cx/g/in-echtzeit-daten-zwischen-touch-designer-und-unreal-engine-schicken).** It is recommended to follow one of those instead of the steps below.
 
-##### Incomplete guide
+##### Steps (incomplete)
 1. Install the plugin as described above
 2. Open or create a TouchDesigner project and place an `Unreal Engine Connection` CHOP.
 3. In the parameters for the CHOP, click `Add` next to `Callback DAT` (you don't need to do anything with that DAT but it's needed by the plugin as a workaround for reading the input channel names).
